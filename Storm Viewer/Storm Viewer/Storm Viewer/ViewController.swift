@@ -27,7 +27,8 @@ class ViewController: UITableViewController {
                 pictures.append(item)
             }
         }
-        print(pictures)
+        sortImageNames()
+        print(pictures.sorted())
     }
     
     // Number of Rows in section in table
@@ -45,8 +46,14 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let viewController = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController{
             viewController.selectedImage = pictures[indexPath.row]
+            viewController.currentImagePosition = indexPath.row + 1
+            viewController.totalNumberOfImages = String(pictures.count)
             navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+    
+    func sortImageNames() {
+        self.pictures = pictures.sorted()
     }
 
 
