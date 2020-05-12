@@ -17,6 +17,7 @@ class ViewController: UITableViewController {
         
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(appRecommendation))
         
         let fileManager = FileManager.default
         let path = Bundle.main.resourcePath!
@@ -29,6 +30,16 @@ class ViewController: UITableViewController {
         }
         sortImageNames()
         print(pictures.sorted())
+    }
+    
+    @objc func appRecommendation(){
+        if let urlStr = NSURL(string: "https://www.zimperium.com/") {
+        let objectsToShare = [urlStr]
+            
+        let vc = UIActivityViewController(activityItems: objectsToShare, applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+        }
     }
     
     // Number of Rows in section in table
