@@ -41,10 +41,16 @@ class ViewController: UIViewController {
         
         button3.layer.borderWidth = 1
         button3.layer.borderColor = UIColor.lightGray.cgColor
-
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(showScore))
 
         askQuestion()
 
+    }
+    
+    @objc func showScore(){
+        let vc = UIActivityViewController(activityItems: ["Your score is \(score)"], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
     }
     
     func askQuestion(action: UIAlertAction! = nil){
