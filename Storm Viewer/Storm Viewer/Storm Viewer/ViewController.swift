@@ -33,7 +33,7 @@ class ViewController: UITableViewController {
     }
     
     @objc func appRecommendation(){
-        if let urlStr = NSURL(string: "https://www.zimperium.com/") {
+        if let urlStr = NSURL(string: "PLACE-LINK-HERE") {
         let objectsToShare = [urlStr]
             
         let vc = UIActivityViewController(activityItems: objectsToShare, applicationActivities: [])
